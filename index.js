@@ -11,10 +11,10 @@ var beautify = require('js-beautify');
 
 module.exports = function pretty(str, options) {
   str = beautify.html(str, {
-    indent_char: ' ',
-    indent_size: 2,
-    indent_inner_html: true,
-    unformatted: ['code', 'pre', 'em', 'strong', 'span']
+    indent_char: options['indent_char'] ? options['indent_char'] : ' ',
+    indent_size: options['indent_size'] ? options['indent_size'] : 2,
+    indent_inner_html: options['indent_inner_html'] ? options['indent_inner_html'] : true,
+    unformatted: options['unformatted']? options['unformatted'] : ['code', 'pre', 'em', 'strong', 'span']
   });
 
   return ocd(str, options);
